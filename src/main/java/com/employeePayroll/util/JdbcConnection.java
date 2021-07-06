@@ -1,4 +1,4 @@
-package com.employeePayroll;
+package com.employeePayroll.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,10 +7,10 @@ import java.util.Enumeration;
 import com.employeePayroll.exception.JdbcConnectionException;
 import java.sql.Driver;
 
-
 public class JdbcConnection {
-	public static void main(String[] args) throws JdbcConnectionException {
 
+	public static Connection getJdbcConnection() throws JdbcConnectionException {
+		
 		String jdbcURL = "jdbc:mysql://localhost:3306/payroll_service?useSSL=false";
 		String userName = "root";
 		String password = "Sanobar@28397";
@@ -22,9 +22,9 @@ public class JdbcConnection {
 		} catch (ClassNotFoundException e) {
 			throw new JdbcConnectionException("Cannot find the driver in the class path" + e);
 		}
-		
+
 		listDrivers();
-		
+
 		try {
 			System.out.println("Connecting to database" + jdbcURL);
 			connection = DriverManager.getConnection(jdbcURL, userName, password);
@@ -32,13 +32,12 @@ public class JdbcConnection {
 		} catch (Exception e) {
 			throw new JdbcConnectionException(e.getMessage());
 		}
-				
+		return connection;
+
 	}
-	
 
 	/**
-	 * Method in which drivers are stored in enumeration list
-	 * to get its class name
+	 * Method in which drivers are stored in enumeration list to get its class name
 	 */
 	private static void listDrivers() {
 		Enumeration<Driver> driverList = DriverManager.getDrivers();

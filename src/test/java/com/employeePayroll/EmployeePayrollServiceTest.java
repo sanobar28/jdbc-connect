@@ -39,4 +39,12 @@ public class EmployeePayrollServiceTest
 		int updatedRows = employeePayrollService.updateSalaryByName("Sanobar", 300000.0);
 		assertTrue(updatedRows > 0);
 	}
+	
+	
+	public void givenEmpName_shouldRetrieveSalary()
+			throws JdbcConnectionException, SQLException, EmployeePayrollException {
+		List<Employee> employeeList = employeePayrollService.getEmployeeList();
+		Double salary = employeePayrollService.getSalaryByName("Sanobar");
+		assertEquals(300000.0, employeeList.get(2));
+	}
 }

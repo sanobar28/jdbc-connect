@@ -51,5 +51,19 @@ public class EmployeePayrollService {
 		}
 		return result;
 	}
+	
+	/**
+	 * Method to get salary by name
+	 * @param name
+	 * @return
+	 * @throws JdbcConnectionException
+	 * @throws SQLException
+	 * @throws EmployeePayrollException
+	 */
+	public Double getSalaryByName(String name) throws JdbcConnectionException, SQLException, EmployeePayrollException {
+		Double result = employeePayrollData.getSalaryByName(name);
+		System.out.println("Employee Name " + name + " Salary " + result);
+		return result;
+	}
 
 }

@@ -14,7 +14,7 @@ public class Employee {
 		
 	}
 
-	public Employee(int id, String employee_name, String gender, LocalDate start_date, String department) {
+	public Employee(int id, String employee_name, Double salary, String gender, LocalDate start_date, String department) {
 		super();
 		this.id = id;
 		this.employee_name = employee_name;
@@ -28,6 +28,15 @@ public class Employee {
 	public String gender;
 	public LocalDate start_date;
 	public String department;
+	public Double salary;
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
 
 	public int getId() {
 		return id;
